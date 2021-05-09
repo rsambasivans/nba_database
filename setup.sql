@@ -1,6 +1,6 @@
-//Jack Yu (jyu108)
-//Raghav Sambasivans (Rsambas1)
-
+/*Jack Yu (jyu108)
+Raghav Sambasivans (Rsambas1)
+*/
 CREATE TABLE Player_Season_Information (
 	PLAYER	VARCHAR(30),
 	POS	VARCHAR(10),
