@@ -1,5 +1,4 @@
 <?php
-
 	// collect login variable values
 	include 'conf.php';  //make sure you've put your credentials in conf.php
 

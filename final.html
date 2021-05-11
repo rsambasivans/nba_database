@@ -1,36 +1,38 @@
 <html>
    <body>
-
 	<!-- (a) -->
-	<h2> Show Raw Scores</h2>
-	<form action="Hw4_ShowRawScores.php" method="post">
-		SSN: <input type="text" name="SSN"> <br/>
+	<h2> Show the top 40 percentile of teams in nba history that led the league in offensive rating</h2>
+	<form action="query_eight.php" method="post">
 		<input type="submit">
 	</form>
 	<br/><br/>
-
-	<!-- (b) -->
-	<h2> Show Percentages and Weighted Averages</h2>
-	<form action="Hw4_ShowPercentages.php" method="post">
-		SSN: <input type="text" name="SSN"> <br/>
+    <h2> Show the player with the highest number of rebounds per game on the team with the best win percentage in a given season</h2>
+	<form action="query_nine.php" method="post">
+		Enter Season: <input type="text" name="season"> <br/>
 		<input type="submit">
 	</form>
 	<br/><br/>
-
-	<!-- (c) -->
-	<h2> Full Table of Raw Scores</h2>
-	<form action="Hw4_ShowAllRawScores.php" method="post">
-		password: <input type="text" name="password"> <br/>
+    <h2> Show the average opposing FG% for the team that had the highest FG% in a given season</h2>
+	<form action="query_ten.php" method="post">
+		Enter Season: <input type="text" name="season"> <br/>
 		<input type="submit">
 	</form>
 	<br/><br/>
-
-	<!-- (d) -->
-	<h2> Full Table of Percentages with Weighted Averages</h2>
-	<form action="Hw4_ShowAllCourseAverages.php" method="post">
-		password: <input type="text" name="password"> <br/>
+    <h2> Show the average regular season points per game for above 0.500 teams during in each of the last 20 seasons</h2>
+	<form action="query_eleven.php" method="post">
 		<input type="submit">
 	</form>
-
+	<br/><br/>
+    <h2> Show the seasons that a given player averaged above 15 ppg while also having his free throws made account for 20% of his total points</h2>
+	<form action="query_thirteen.php" method="post">
+		Enter Player Name: <input type="text" name="player"> <br/>
+		<input type="submit">
+	</form>
+	<br/><br/>
+    <h2> Amongst all teams in nba history that have made won above 60 percent of their games, show the teams that rank in the top 30% in both offensive and defensive rating </h2>
+	<form action="query_fourteen.php" method="post">
+		<input type="submit">
+	</form>
+	<br/><br/>
    </body>
 </html>
