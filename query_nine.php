@@ -5,24 +5,31 @@
     echo "<br>";
     $season = $_POST['season'];
     $query = "CALL query_nine('".$season."');";
-    if ($result = $conn->query($query)) {
-        if (mysqli_num_rows($result) == 0) {
-            echo "No Results";
-        } else {
-            echo "<h2> Results: </h2>";
-            echo "<table border = \"5px solid black\">";
-            echo "<tr><th> Player Name </th><th> Rebounds Per Game </th></tr>";
-            foreach($result as $row) {
-                echo "<tr><td>".$row['PLAYER']."</td>";
-                echo "<td>".$row['TRB']."</td></tr>";
+    if ($stmt = $conn->prepare($query)) {
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            $result->fetch_assoc();
+            if (mysqli_num_rows($result) == 0) {
+                echo "No Results";
+            } else {
+                echo "<h2> Results: </h2>";
+                echo "<table border = \"5px solid black\">";
+                echo "<tr><th> Player Name </th><th> Rebounds Per Game </th></tr>";
+                foreach($result as $row) {
+                    echo "<tr><td>".$row['PLAYER']."</td>";
+                    echo "<td>".$row['TRB']."</td></tr>";
+                }
+                echo "</table>";
             }
-            echo "</table>";
+        } else {
+            echo "ERROR: Call to query_nine failed <br>";
         }
     } else {
-        echo "ERROR: Call to query_nine failed <br>";
+        echo "ERROR: Prepare Failed <br>";
     }
 
     echo "<br>";
+    $stmt->close();
     $conn->close();
 ?>
 </body>
