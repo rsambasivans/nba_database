@@ -4,8 +4,13 @@
     include 'open.php';
     echo "<br>";
     $country = $_POST['country'];
-    $query = "CALL query_five('".$country."');";
+    $query = "CALL query_five(?);";
+    if (empty($country)) {
+       echo "ERROR: Please enter country <br>";
+    }
+    else {
     if ($stmt = $conn->prepare($query)) {
+       $stmt->bind_param("s", $country);
         if ($stmt->execute()) {
             $result = $stmt->get_result();
             $result->fetch_assoc();
@@ -23,7 +28,7 @@
                 echo "</table>";
             }
         } else {
-            echo "ERROR: Call to query_five failed <br>";
+            echo "ERROR: Call to query_five failed likely due to invalid country<br>";
         }
     } else {
         echo "ERROR: Prepare Failed <br>";
@@ -31,6 +36,7 @@
 
     echo "<br>";
     $stmt->close();
+    }
     $conn->close();
 ?>
 </body>

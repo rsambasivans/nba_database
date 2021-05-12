@@ -1,9 +1,9 @@
-<head><title>Show what percent of total shots have the leaders in defensive rating shot from the three point line? (list from lowest to highest)</title><head>
+<head><title>Show the average regular season points per game for above 0.500 teams during in each of the last 20 seasons</title><head>
 <body>
 <?php
     include 'open.php';
     echo "<br>";
-    $query = "CALL query_seven();";
+    $query = "CALL query_eleven();";
     $dataPoints = array();
     if ($stmt = $conn->prepare($query)) {
         if ($stmt->execute()) {
@@ -14,28 +14,28 @@
             } else {
                 echo "<h2> Results: </h2>";
                 echo "<table border = \"5px solid black\">";
-                echo "<tr><th> Team </th><th> End Season </th><th> ThreeAttemptRatio </th></tr>";
+                echo "<tr><th> Season </th><th> Avg PPG </th></tr>";
                 foreach($result as $row) {
-		    $temp =  array("x" => strtotime($row["END_SEASON"].'-1-01') * 1000, "y" => $row["ThreeAttemptRatio"]);
-		    array_push($dataPoints, $temp);
-                    echo "<tr><td>".$row['TEAM']."</td>";
-		    echo "<td>".$row['END_SEASON']."</td>";
-		    echo "<td>".$row['ThreeAttemptRatio']."</td></tr>";
+                    $temp =  array("x" => strtotime(substr($row["SEASON"], 0, 4).'-1-01') * 1000, 
+                                   "y" => $row["avg_pts"]);
+                    array_push($dataPoints, $temp);
+                    echo "<tr><td>".$row['SEASON']."</td>";
+                    echo "<td>".$row['avg_pts']."</td></tr>";
                 }
                 echo "</table>";
             }
         } else {
-            echo "ERROR: Call to query_seven failed <br>";
+        echo "ERROR: Call to query_eleven failed <br>";
         }
     } else {
         echo "ERROR: Prepare Failed <br>";
     }
-
     echo "<br>";
     $stmt->close();
     $conn->close();
 ?>
 </body>
+
 <html>
 <head>
 <script type="text/javascript">
@@ -44,24 +44,24 @@ window.onload = function () {
    var chart = new CanvasJS.Chart("chartContainer",
    {
       title: {
-         text: "Percentage of total shots taken from the three point line for defensive leaders",
+         text: "Average PPG for above 0.500 teams",
          fontFamily: 'tahoma'
       },
          axisY: {
-            title: "Ratio of three point shot attempts to total shots"
+            title: "Regular Season Points Per Game"
          },
          axisX: {
-            title: "End Season"
+            title: "Year"
          },
          data: [{
-            type: "scatter",
+            type: "line",
             color: "#369EAD",
             xValueType: "dateTime",
             dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
          }]
    });
 
-        chart.render();
+	chart.render();
 }
 
 </script>
