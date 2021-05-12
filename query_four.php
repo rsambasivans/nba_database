@@ -4,9 +4,14 @@
     include 'open.php';
     echo "<br>";
     $team = $_POST['team'];
-    $query = "CALL query_four('".$team."');";
+    $query = "CALL query_four(?);";
+    if (empty($team)) {
+       echo "ERROR: Please enter team <br>";
+    }
+    else {
     if ($stmt = $conn->prepare($query)) {
-        if ($stmt->execute()) {
+        $stmt->bind_param("s", $team);
+       	if ($stmt->execute()) {
             $result = $stmt->get_result();
             $result->fetch_assoc();
             if (mysqli_num_rows($result) == 0) {
@@ -23,7 +28,7 @@
                 echo "</table>";
             }
         } else {
-            echo "ERROR: Call to query_four failed <br>";
+            echo "ERROR: Call to query_four failed. Likely invalid team. <br>";
         }
     } else {
         echo "ERROR: Prepare Failed <br>";
@@ -31,6 +36,7 @@
 
     echo "<br>";
     $stmt->close();
+    }
     $conn->close();
 ?>
 </body>

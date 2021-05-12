@@ -18,13 +18,52 @@
         <br/><br/>
     <h2> List the seasons where “TEAM” has won above 45 games during the regular season and had no players averaging above 23 ppg between 2000 and 2020</h2>
         <form action="query_four.php" method="post">
-          Enter Team: <input type="text" name="team"> <br/>
+          Enter Team:
+	  <select name='team'>
+                        <option value="ATL">ATLANTA HAWKS</option>
+			<option value="BOS">BOSTON CELTICS</option>
+			<option value="BRK">BROOKLYN NETS</option>
+			<option value="NJN">NEW JERSEY NETS</option>
+			<option value="CHI">CHICAGO BULLS</option>
+			<option value="CHH">CHARLOTTE HORNETS (1988-2004)</option>
+			<option value="CHO">CHARLOTTE HORNETS (2014-Present)</option>
+			<option value="CHA">CHARLOTTE BOBCATS</option>
+			<option value="CLE">CLEVELAND CAVALIERS</option>
+			<option value="DAL">DALLAS MAVERICKS</option>
+			<option value="DEN">DENVER NUGGETS</option>
+			<option value="DET">DETROIT PISTONS</option>
+			<option value="GSW">GOLDEN STATE WARRIORS</option>
+			<option value="HOU">HOUSTON ROCKETS</option>
+			<option value="IND">INDIANA PACERS</option>
+			<option value="LAC">LOS ANGELES CLIPPERS</option>
+			<option value="LAL">LOS ANGELES LAKERS</option>
+			<option value="MEM">MEMPHIS GRIZZLIES</option>
+			<option value="VAN">VANCOUVER GRIZZLIES</option>
+			<option value="MIA">MIAMI HEAT</option>
+			<option value="MIL">MILWAUKEE BUCKS</option>
+			<option value="MIN">MINNESOTA TIMBERWOLVES</option>
+			<option value="NOP">NEW ORLEANS PELICANS</option>
+			<option value="NOK">NEW ORLEANS/OKLAHOMA CITY HORNETS</option>
+			<option value="NOH">NEW ORLEANS HORNETS</option>
+			<option value="NYK">NEW YORK KNICKS</option>
+			<option value="OKC">OKLAHOMA CITY THUNDER</option>
+			<option value="SEA">SEATTLE SUPERSONICS</option>
+			<option value="ORL">ORLANDO MAGIC</option>
+			<option value="PHI">PHILADELPHIA 76ERS</option>
+			<option value="PHO">PHOENIX SUNS</option>
+			<option value="POR">PORTLAND TRAIL BLAZERS</option>
+			<option value="SAC">SACRAMENTO KINGS</option>
+			<option value="SAS">SAN ANTONIO SPURS</option>
+			<option value="TOR">TORONTO RAPTORS</option>
+			<option value="UTA">UTAH JAZZ</option>
+			<option value="WAS">WASHINGTON WIZARDS</option>
+          </select><br/>
 	  <input type="submit">
         </form>
         <br/><br/>
     <h2> List all players from "COUNTRY" that have played in the nba since 2000 and have played on at least 3 different teams with losing records?</h2>
         <form action="query_five.php" method="post">
-          Enter Country: <input type="text" name="country"> <br/>
+          Enter Nationality (Ex: FR, US): <input type="text" name="country"> <br/>
           <input type="submit">
         </form>
         <br/><br/>
