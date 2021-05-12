@@ -23,6 +23,12 @@
 		<input type="submit">
 	</form>
 	<br/><br/>
+    <h2> Show the win percentage, offensive rating, and defensive rating, for the top 50 percentile of the league in 3P% in a given season</h2>
+	<form action="query_twelve.php" method="post">
+		Enter Season: <input type="text" name="season"> <br/>
+		<input type="submit">
+	</form>
+	<br/><br/>
     <h2> Show the seasons that a given player averaged above 15 ppg while also having his free throws made account for 20% of his total points</h2>
 	<form action="query_thirteen.php" method="post">
 		Enter Player Name: <input type="text" name="player"> <br/>
@@ -32,6 +38,51 @@
     <h2> Amongst all teams in nba history that have made won above 60 percent of their games, show the teams that rank in the top 30% in both offensive and defensive rating </h2>
 	<form action="query_fourteen.php" method="post">
 		<input type="submit">
+	</form>
+	<br/><br/>
+    <h2> For a given player, show the players top 30 percentile seasons in terms of points per game </h2>
+	<form action="query_fifteen.php" method="post">
+		Enter Player Name: <input type="text" name="player"> <br/>
+		<input type="submit">
+	</form>
+	<br/><br/>
+    <h2> Insert Player into Database </h2>
+	<form action="insert.php" method="post">
+		Enter Player Name: <input type="text" name="player"> <br/>
+		Enter Number: <input type="text" name="number"> <br/>
+		Enter Position:
+		<select name='position'>
+			<option value="C">Center</option>}
+			<option value="PF">Power Forward</option>
+			<option value="SG">Shooting Guard</option>
+			<option value="PG">Point Guard</option>
+			<option value="SF">Small Forward</option>
+		</select>  <br/>
+		Enter Height (Ex: 6-5): <input type="text" name="height"> <br/>
+		Enter Weight: <input type="number" name="weight"> <br/>
+		Enter Birth-Date (Ex: 2000-10-04): <input type="text" name="date"> <br/>
+		Enter Nationality (Ex: FR, US): <input type="text" name="nationality"> <br/>
+		Enter Experience in years: <input type="number" name="experience"> <br/>
+		Enter College: <input type="text" name="college"> <br/>
+		<input type="submit">
+		<br/><br/>
+	</form>
+	<br/><br/>
+    <h2> Delete Player into Database </h2>
+	<form action="delete.php" method="post">
+		Enter Player Name: <input type="text" name="player"> <br/>
+		Enter Number: <input type="text" name="number"> <br/>
+		Enter Position:
+		<select name='position'>
+			<option value="C">Center</option>}
+			<option value="PF">Power Forward</option>
+			<option value="SG">Shooting Guard</option>
+			<option value="PG">Point Guard</option>
+			<option value="SF">Small Forward</option>
+		</select>  <br/>
+		Enter Experience in years: <input type="number" name="experience"> <br/>
+		<input type="submit">
+		<br/><br/>
 	</form>
 	<br/><br/>
    </body>
