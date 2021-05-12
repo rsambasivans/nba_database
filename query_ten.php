@@ -4,33 +4,38 @@
     include 'open.php';
     echo "<br>";
     $season = $_POST['season'];
-    $query = "CALL query_ten('".$season."');";
-    if ($stmt = $conn->prepare($query)) {
-        if ($stmt->execute()) {
-            $result = $stmt->get_result();
-            $result->fetch_assoc();
-            if (mysqli_num_rows($result) == 0) {
-                echo "No Results";
-            } else {
-                echo "<h2> Results: </h2>";
-                echo "<table border = \"5px solid black\">";
-                echo "<tr><th> TEAM </th><th> FG% </th><th> Avg Opponent FG% </th></tr>";
-                foreach($result as $row) {
-                    echo "<tr><td>".$row['TEAM']."</td>";
-                    echo "<td>".$row['FG_pct']."</td>";
-                    echo "<td>".$row['OPP_FG_pct']."</td></tr>";
+    $query = "CALL query_ten(?);";
+    if (empty($season)) {
+        echo "ERROR: Please enter season <br>";
+    } else {
+        if ($stmt = $conn->prepare($query)) {
+            $stmt->bind_param("s", $season);
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                $result->fetch_assoc();
+                if (mysqli_num_rows($result) == 0) {
+                    echo "No Results";
+                } else {
+                    echo "<h2> Results: </h2>";
+                    echo "<table border = \"5px solid black\">";
+                    echo "<tr><th> TEAM </th><th> FG% </th><th> Avg Opponent FG% </th></tr>";
+                    foreach($result as $row) {
+                        echo "<tr><td>".$row['TEAM']."</td>";
+                        echo "<td>".$row['FG_pct']."</td>";
+                        echo "<td>".$row['OPP_FG_pct']."</td></tr>";
+                    }
+                    echo "</table>";
                 }
-                echo "</table>";
+            } else {
+                echo "ERROR: Call to query_ten failed <br>";
             }
         } else {
-            echo "ERROR: Call to query_ten failed <br>";
+            echo "ERROR: Prepare Failed <br>";
         }
-    } else {
-        echo "ERROR: Prepare Failed <br>";
-    }
 
-    echo "<br>";
-    $stmt->close();
+        echo "<br>";
+        $stmt->close();
+    }
     $conn->close();
 ?>
 </body>
