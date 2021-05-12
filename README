@@ -1,0 +1,8 @@
+Jack Yu (jyu108)
+Raghav Sambasivans (rsambas1)
+
+Some feedback that our CA gave us after phase C and D was to add a few queries that were more complex including
+some percentile based queries and some that involve some more joins in the actual sql queries. We adjusted the
+queries we used in the final layout to address this feedback and we had our CA review the updated queries
+to make sure that they're adequate. Specifically, we added around 5 queries that use percentile calculates to add
+anoter layer of complexity.

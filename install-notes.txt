@@ -1,0 +1,14 @@
+We included all of our stored procedures scripts in procedures.sql
+
+1. mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < setup.sql
+
+or
+
+1. mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < setup-small.sql
+
+
+2. mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < procedures.sql
+
+
+
+After that all of the procedures should be correctly loaded onto the users database.
